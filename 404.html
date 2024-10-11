@@ -2,10 +2,24 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; URL='https://b15.app'" />
-    <title>Redirecionamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregando...</title>
 </head>
 <body>
-    <p>Se você não for redirecionado automaticamente, <a href="https://b15.app">clique aqui</a>.</p>
+    <script>
+        var doc = document.getElementById('htmlbody');
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    doc.innerHTML = this.responseText;
+                    doc.removeAttribute("id");
+                }
+                if (this.status == 404) doc.innerHTML = "Página não encontrada.";
+            }
+        }
+        xhttp.open("GET", "index.html", true);
+        xhttp.send();
+    </script>
 </body>
 </html>
